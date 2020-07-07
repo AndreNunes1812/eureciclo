@@ -66,15 +66,7 @@ const App = () =>  {
         />
 
         <button onClick={() => handleClickEntrada(entrada)}>Processar</button>
-       
-        <a
-          className="App-link"
-          href="https://alias.eureciclo.com.br/"
-          target="_blank"
-          rel="noopener noreferrer"          
-        >
-          Eureciclo
-        </a>
+
         <Totalizador           
           saldo={saldo}
           entrada={concatenar}
