@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 import logo from './eureciclo.svg';
 import './App.css';
 
@@ -50,7 +52,8 @@ const App = () =>  {
 
   const handleClickEntrada= (entrada)=> {
     if (entrada <= 0 ) {
-      throw "Valor negativo ou zero"
+      return false
+
     }
     handleEsvaziar(entrada)
   }
@@ -75,8 +78,8 @@ const App = () =>  {
           type="number"          
         />
 
-        <button onClick={() => handleClickEntrada(entrada)}>Processar</button>
-        <button onClick={handleClickNovo}>Novo</button>
+        <Button onClick={() => handleClickEntrada(entrada)}>Processar</Button>
+        <Button onClick={handleClickNovo}>Novo</Button>
         
 
         <Totalizador           
