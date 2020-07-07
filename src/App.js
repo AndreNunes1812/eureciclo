@@ -53,7 +53,7 @@ const App = () =>  {
   return (
     <div className="App">
       <header className="App-header">
-        <strong style={{paddingBottom: '100px'}}>Questão numero dois</strong>
+        <strong style={{paddingBottom: '100px'}}>Questão numero 2</strong>
         <img src={logo} className="App-logo" alt="logo" />
         <label>Deseja esvaziar ?</label>
         <input 
