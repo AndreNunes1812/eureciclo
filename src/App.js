@@ -55,7 +55,7 @@ const App = () =>  {
       <header className="App-header">
         <strong style={{paddingBottom: '100px'}}>Questão numero 2</strong>
         <img src={logo} className="App-logo" alt="logo" />
-        <label>Deseja esvaziar?</label>
+        <label>Deseja esvaziar ?</label>
         <input 
           name="entrada" 
           id="entrada"
