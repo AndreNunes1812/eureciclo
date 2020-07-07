@@ -12,7 +12,8 @@ const App = () =>  {
   const [saldo, setSaldo] = useState(0);
  
   var valoresUtilizados = [];
-  var concatenarValores = ''
+  var concatenarValores = '';
+  var elemento = '';
 
   // Definição do Array com a quantidade de litros para preencher o Galão
   const litros = [1, 3, 4.5, 1.5, 3.5 ]; 
@@ -20,40 +21,49 @@ const App = () =>  {
   // Funcao criada para ordernar do menor para o maior
   function funcionDeComparacao (elem1, elem2) { return (elem2 - elem1); }
 
-  const handleEsvaziar = (quantidade) => {
-    console.log('esvaziar:', quantidade)
+  const handleEsvaziar = (quantidade) => {    
     // processo de ordenação
     litros.sort(funcionDeComparacao);
 
     litros.forEach(element => {
-      if (quantidade - element > 0) {
+    
+      if (quantidade - element >= 0) {
         quantidade = quantidade - element
         valoresUtilizados.push(element)
         setSaldo(quantidade);
-        concatenarValores = concatenarValores +  element + ' , ';  
-        
+        elemento = element
+        concatenarValores = concatenarValores +  elemento + ' , ';  
+    
       } else {
-         setSaldo(quantidade);
+        setSaldo(quantidade);
       }    
       
-    });
+    });  
     setConcatenar( concatenarValores )
   }
 
+  const handleClickNovo = () => {
+    setConcatenar('');
+    setEntrada('');
+    setSaldo(0);
+  }
+
   const handleClickEntrada= (entrada)=> {
+    if (entrada <= 0 ) {
+      throw "Valor negativo ou zero"
+    }
     handleEsvaziar(entrada)
   }
 
   const handleChangeInput = (event)=> {
-    const { value } = event.target
-    console.log(value);
+    const { value } = event.target    
     setEntrada(value)
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <strong style={{paddingBottom: '100px'}}>Questão numero 2</strong>
+        <strong style={{paddingBottom: '100px'}}>Questão numero 2 - [1, 3, 4.5, 1.5, 3.5 ]</strong>
         <img src={logo} className="App-logo" alt="logo" />
         <label>Deseja esvaziar ?</label>
         <input 
@@ -66,6 +76,8 @@ const App = () =>  {
         />
 
         <button onClick={() => handleClickEntrada(entrada)}>Processar</button>
+        <button onClick={handleClickNovo}>Novo</button>
+        
 
         <Totalizador           
           saldo={saldo}
